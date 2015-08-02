@@ -29,7 +29,7 @@ object DefaultSpreadsheet extends Spreadsheet {
     xs: List[ECell],
     ys: List[ECell]
   ): List[ECell] = xs match {
-    case Nil => Nil
+    case Nil => ys
     case x :: xs1 =>
       if (ys.exists(y => id(x) == id(y)))
         union(xs1, ys)
