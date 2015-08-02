@@ -9,3 +9,4 @@ This is a Scala translation of a highly imperative dataflow system given in ["Ho
 - [OCaml](https://github.com/FranklinChen/spreadsheet-ocaml)
 - [Scala](https://github.com/FranklinChen/spreadsheet-scala)
 - [Haskell](https://github.com/FranklinChen/spreadsheet-haskell)
+- [Ruby](https://github.com/FranklinChen/spreadsheet-ruby)
