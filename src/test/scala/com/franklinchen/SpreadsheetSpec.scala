@@ -2,18 +2,18 @@ package com.franklinchen
 
 import org.specs2._
 
-import scalaz.syntax.monad._
+// To use Scala for-comprehensions for monads.
+import cats.syntax.functor._
+import cats.syntax.flatMap._
 
 abstract class SpreadsheetSpec extends Specification { def is = s2"""
   ${`Handle dependencies in 3-cell graph`}
   ${`Handle dependencies among different cell types`}
   """
 
-  import scala.language.existentials
-
   val spreadsheet: Spreadsheet
   import spreadsheet._
-  import spreadsheet.expMonad._
+  import spreadsheet.expMonad.pure
 
   def `Handle dependencies in 3-cell graph` = {
     val threeCells: Exp[(Cell[Int], Cell[Int], Cell[Int])] = for {

@@ -1,6 +1,6 @@
 package com.franklinchen
 
-import scalaz.Monad
+import cats.Monad
 
 object DefaultSpreadsheet extends Spreadsheet {
   /**
@@ -38,10 +38,10 @@ object DefaultSpreadsheet extends Spreadsheet {
   }
 
   implicit object expMonad extends Monad[Exp] {
-    override def point[A](a: => A) = () =>
+    override def pure[A](a: A): Exp[A] = () =>
     (a, List())
 
-    override def bind[A, B](e: Exp[A])(f: A => Exp[B]): Exp[B] = () => {
+    override def flatMap[A, B](e: Exp[A])(f: A => Exp[B]): Exp[B] = () => {
       val (a, cs) = e()
       val (b, ds) = f(a)()
       (b, union(cs, ds))

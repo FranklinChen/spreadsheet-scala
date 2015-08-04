@@ -1,7 +1,7 @@
 package com.franklinchen
 
 import scala.language.higherKinds
-import scalaz.Monad
+import cats.Monad
 
 trait Spreadsheet {
   type Cell[_]
