@@ -20,6 +20,6 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.spire-math" %% "cats" % "0.2.0",
+  "org.spire-math" %% "cats" % "0.3.0",
   "org.specs2" %% "specs2-core" % "3.6.5" % Test
 )
