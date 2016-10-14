@@ -1,6 +1,8 @@
 package com.franklinchen
 
-import cats.Monad
+import cats._
+import cats.data._
+import cats.implicits._
 
 object DefaultSpreadsheet extends Spreadsheet {
   /**
@@ -46,6 +48,9 @@ object DefaultSpreadsheet extends Spreadsheet {
       val (b, ds) = f(a)()
       (b, union(cs, ds))
     }
+
+    override def tailRecM[A, B](a: A)(f: A => Exp[Either[A, B]]): Exp[B] =
+      defaultTailRecM(a)(f)
   }
 
   var r: Int = 0
