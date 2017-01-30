@@ -12,7 +12,7 @@ description := "Spreadsheet demo in Scala"
 
 version := "1.0.0"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.1"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -20,6 +20,6 @@ scalacOptions ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "org.typelevel" %% "cats" % "0.7.2",
-  "org.specs2" %% "specs2-core" % "3.8.5" % Test
+  "org.typelevel" %% "cats" % "0.9.0",
+  "org.specs2" %% "specs2-core" % "3.8.7" % Test
 )

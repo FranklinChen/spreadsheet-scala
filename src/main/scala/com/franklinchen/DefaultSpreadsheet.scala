@@ -49,8 +49,8 @@ object DefaultSpreadsheet extends Spreadsheet {
       (b, union(cs, ds))
     }
 
-    override def tailRecM[A, B](a: A)(f: A => Exp[Either[A, B]]): Exp[B] =
-      defaultTailRecM(a)(f)
+    /* TODO implement. */
+    override def tailRecM[A, B](a: A)(f: A => Exp[Either[A, B]]): Exp[B] = ???
   }
 
   var r: Int = 0
