@@ -5,6 +5,7 @@ import cats.data._
 import cats.implicits._
 
 object DefaultSpreadsheet extends Spreadsheet {
+
   /**
     A cell with global identity.
 
@@ -12,11 +13,11 @@ object DefaultSpreadsheet extends Spreadsheet {
     own globally uniquely generated id.
     */
   case class Cell[A](
-    var code: Exp[A],
-    var value: Option[A],
-    var reads: List[ECell],
-    var observers: List[ECell],
-    id: Int
+      var code: Exp[A],
+      var value: Option[A],
+      var reads: List[ECell],
+      var observers: List[ECell],
+      id: Int
   )
 
   type Exp[A] = () => (A, List[ECell])
@@ -28,20 +29,20 @@ object DefaultSpreadsheet extends Spreadsheet {
 
   /** Union of two lists. Should really be using Set. */
   def union(
-    xs: List[ECell],
-    ys: List[ECell]
+      xs: List[ECell],
+      ys: List[ECell]
   ): List[ECell] = xs match {
     case Nil => ys
     case x :: xs1 =>
-      if (ys.exists(y => id(x) == id(y)))
+      if (ys.exists(y => id(x) == id(y))) {
         union(xs1, ys)
-      else
+      } else {
         x :: union(xs1, ys)
+      }
   }
 
   implicit object expMonad extends Monad[Exp] {
-    override def pure[A](a: A): Exp[A] = () =>
-    (a, List())
+    override def pure[A](a: A): Exp[A] = () => (a, List())
 
     override def flatMap[A, B](e: Exp[A])(f: A => Exp[B]): Exp[B] = () => {
       val (a, cs) = e()
@@ -72,23 +73,26 @@ object DefaultSpreadsheet extends Spreadsheet {
     (c, List())
   }
 
-  override def get[A](c: Cell[A]): Exp[A] = () =>
-    c.value match {
-      case Some(v) => (v, List(c))
-      case None => {
-        val (v, ds) = c.code()
-        c.value = Some(v)
-        c.reads = ds
-        for (d <- ds) {
-          d.observers = c :: d.observers
+  override def get[A](c: Cell[A]): Exp[A] =
+    () =>
+      c.value match {
+        case Some(v) => (v, List(c))
+        case None => {
+          val (v, ds) = c.code()
+          c.value = Some(v)
+          c.reads = ds
+          for (d <- ds) {
+            d.observers = c :: d.observers
+          }
+          (v, List(c))
         }
-        (v, List(c))
-      }
     }
 
   /** Remove o from c's observers. */
   def removeObserver(o: ECell)(c: ECell): Unit =
-    c.observers = c.observers filter { o1 => id(o) != id(o1) }
+    c.observers = c.observers filter { o1 =>
+      id(o) != id(o1)
+    }
 
   def invalidate(c: ECell): Unit = {
     val os = c.observers

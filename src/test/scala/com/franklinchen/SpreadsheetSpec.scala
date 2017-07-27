@@ -6,7 +6,8 @@ import org.specs2._
 import cats.syntax.functor._
 import cats.syntax.flatMap._
 
-abstract class SpreadsheetSpec extends Specification { def is = s2"""
+abstract class SpreadsheetSpec extends Specification {
+  def is = s2"""
   ${`Handle dependencies in 3-cell graph`}
   ${`Handle dependencies among different cell types`}
   """
