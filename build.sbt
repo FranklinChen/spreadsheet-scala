@@ -21,5 +21,5 @@ scalacOptions ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.typelevel" %% "cats-core" % "1.0.0-MF",
-  "org.specs2" %% "specs2-core" % "3.9.4" % Test
+  "org.specs2" %% "specs2-core" % "4.0.0-RC1" % Test
 )
