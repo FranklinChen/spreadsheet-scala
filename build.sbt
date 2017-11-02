@@ -9,11 +9,12 @@ lazy val root = (project in file("."))
     version := "1.0.0",
     scalaVersion := "2.12.4",
     scalacOptions ++= Seq(
+      "-Ypartial-unification",
       "-deprecation",
       "-feature"
     ),
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats-core" % "1.0.0-MF",
+      "org.typelevel" %% "cats-core" % "1.0.0-RC1",
       "org.specs2" %% "specs2-core" % "4.0.1" % Test
     )
   )
