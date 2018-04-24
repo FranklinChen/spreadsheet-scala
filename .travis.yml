@@ -8,8 +8,9 @@ cache:
 scala:
   - 2.12.4
 jdk:
-  - openjdk10
-  - openjdk9
+#  - oraclejdk10
+#  - openjdk10
+#  - openjdk9
   - oraclejdk9
   - openjdk8
   - oraclejdk8
