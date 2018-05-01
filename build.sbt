@@ -7,7 +7,7 @@ lazy val root = (project in file("."))
     startYear := Some(2015),
     description := "Spreadsheet demo in Scala",
     version := "1.0.0",
-    scalaVersion := "2.12.4",
+    scalaVersion := "2.12.6",
     scalacOptions ++= Seq(
       "-Ypartial-unification",
       "-deprecation",
@@ -15,6 +15,6 @@ lazy val root = (project in file("."))
     ),
     libraryDependencies ++= Seq(
       "org.typelevel" %% "cats-core" % "1.1.0",
-      "org.specs2" %% "specs2-core" % "4.0.3" % Test
+      "org.specs2" %% "specs2-core" % "4.1.0" % Test
     )
   )
