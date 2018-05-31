@@ -5,15 +5,18 @@ cache:
   directories:
     - $HOME/.ivy2/cache
     - $HOME/.sbt/boot/
+os:
+  - linux
+  - osx
 scala:
   - 2.12.6
 jdk:
-#  - oraclejdk10
-#  - openjdk10
-#  - openjdk9
+  - oraclejdk10
+  - openjdk10
   - oraclejdk9
-  - openjdk8
+  - openjdk9
   - oraclejdk8
+  - openjdk8
 script:
   - sbt ++$TRAVIS_SCALA_VERSION clean coverage test coverageReport
   - find $HOME/.sbt -name "*.lock" | xargs rm
