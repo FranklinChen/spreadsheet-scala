@@ -11,7 +11,7 @@ before_cache:
   - find $HOME/.sbt -name "*.lock" -delete
 os:
   - linux
-#  - osx
+  - osx
 scala:
   - 2.12.6
 jdk:
