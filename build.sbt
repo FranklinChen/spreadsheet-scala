@@ -14,9 +14,9 @@ lazy val root = (project in file("."))
       "-feature"
     ),
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats-core" % "1.6.0",
-      "org.specs2" %% "specs2-core" % "4.4.1" % Test,
-      "org.typelevel" %% "cats-laws" % "1.6.0" % Test,
-      "com.github.alexarchambault" %% "scalacheck-shapeless_1.14" % "1.2.0" % Test
+      "org.typelevel" %% "cats-core" % "2.0.0-M3",
+      "org.specs2" %% "specs2-core" % "4.5.1" % Test,
+      "org.typelevel" %% "cats-laws" % "1.6.1" % Test,
+      "com.github.alexarchambault" %% "scalacheck-shapeless_1.14" % "1.2.2" % Test
     )
   )
