@@ -18,7 +18,7 @@ matrix:
   allow_failures:
     - jdk: openjdk-ea
 scala:
-  - 2.12.8
+  - 2.13.0
 script:
   - sbt ++$TRAVIS_SCALA_VERSION clean coverage test coverageReport
   - find $HOME/.sbt -name "*.lock" | xargs rm
