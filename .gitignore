@@ -4,3 +4,4 @@ target/
 *.iml
 /.bloop-config/
 .bloop/
+/.metals/
