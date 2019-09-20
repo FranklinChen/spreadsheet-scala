@@ -20,7 +20,5 @@ matrix:
 scala:
   - 2.13.1
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION clean coverage test coverageReport
+  - sbt ++$TRAVIS_SCALA_VERSION clean test
   - find $HOME/.sbt -name "*.lock" | xargs rm
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
