@@ -1,7 +1,6 @@
 target/
-.ensime*
 .idea*
 *.iml
-/.bloop-config/
+.metals/
 .bloop/
-/.metals/
+project/metals.sbt
