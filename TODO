@@ -1,0 +1,3 @@
+write monad laws tests?
+https://typelevel.org/cats/typeclasses/lawtesting.html
+use ScalaTest?
