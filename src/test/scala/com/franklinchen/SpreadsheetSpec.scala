@@ -1,22 +1,19 @@
 package com.franklinchen
 
-import org.specs2._
+import org.scalatest._
+import flatspec._
+import matchers._
 
 // To use Scala for-comprehensions for monads.
 import cats.syntax.functor._
 import cats.syntax.flatMap._
 
-abstract class SpreadsheetSpec extends Specification {
-  def is = s2"""
-  ${`Handle dependencies in 3-cell graph`}
-  ${`Handle dependencies among different cell types`}
-  """
-
+abstract class SpreadsheetSpec extends AnyFlatSpec with should.Matchers {
   val spreadsheet: Spreadsheet
   import spreadsheet._
   import spreadsheet.expMonad.pure
 
-  def `Handle dependencies in 3-cell graph` = {
+  "A Spreadsheet" should "Handle dependencies in 3-cell graph" in {
     val threeCells: Exp[(Cell[Int], Cell[Int], Cell[Int])] = for {
       a <- cell(pure(1))
 
@@ -30,22 +27,22 @@ abstract class SpreadsheetSpec extends Specification {
       )
     } yield (a, b, c)
 
-    val (a, b, c) = run(threeCells)
+    val (a, b, c) = spreadsheet.run(threeCells)
 
-    run(get(c)) ==== 3
+    spreadsheet.run(get(c)) should be (3)
 
     set(a, pure(100))
-    run(get(c)) ==== 102
+    spreadsheet.run(get(c)) should be (102)
 
     set(a, for {
       bValue <- get(b)
     } yield bValue * bValue)
     set(b, pure(4))
 
-    run(get(c)) ==== 20
+    spreadsheet.run(get(c)) should be (20)
   }
 
-  def `Handle dependencies among different cell types` = {
+  it should "Handle dependencies among different cell types" in {
     val differentTypesCells: Exp[(Cell[String], Cell[Int], Cell[Int])] = for {
       a <- cell(pure("hello"))
 
@@ -59,13 +56,13 @@ abstract class SpreadsheetSpec extends Specification {
       )
     } yield (a, b, c)
 
-    val (a, b, c) = run(differentTypesCells)
+    val (a, b, c) = spreadsheet.run(differentTypesCells)
 
-    run(get(c)) ==== 7
+    spreadsheet.run(get(c)) should be (7)
 
     set(b, pure(3))
     set(a, pure("no"))
 
-    run(get(c)) ==== 5
+    spreadsheet.run(get(c)) should be (5)
   }
 }
