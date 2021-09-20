@@ -5,6 +5,8 @@ import cats.data._
 import cats.implicits._
 
 object DefaultSpreadsheet extends Spreadsheet {
+  /** Existential type. */
+  type ECell = Cell[_]
 
   /**
     A cell with global identity.
@@ -21,9 +23,6 @@ object DefaultSpreadsheet extends Spreadsheet {
   )
 
   type Exp[A] = () => (A, List[ECell])
-
-  /** Existential type. */
-  type ECell = Cell[_]
 
   def id(c: ECell): Int = c.id
 
