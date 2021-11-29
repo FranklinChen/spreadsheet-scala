@@ -16,7 +16,7 @@ lazy val root = (project in file("."))
       "-feature"
     ),
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats-core" % "2.6.1",
+      "org.typelevel" %% "cats-core" % "2.7.0",
       "org.scalatest" %% "scalatest" % "3.2.10" % Test
     )
   )
