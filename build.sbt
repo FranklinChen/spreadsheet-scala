@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion := "3.1.2"
+ThisBuild / scalaVersion := "3.1.3"
 ThisBuild / githubWorkflowPublishTargetBranches := Seq()
 
 lazy val root = (project in file("."))
@@ -10,13 +10,13 @@ lazy val root = (project in file("."))
     startYear := Some(2015),
     description := "Spreadsheet demo in Scala",
     version := "1.0.0",
-    crossScalaVersions := List("2.12.15", "2.13.8", "3.1.2"),
+    crossScalaVersions := List("2.12.16", "2.13.8", "3.1.3"),
     scalacOptions ++= Seq(
       "-deprecation",
       "-feature"
     ),
     libraryDependencies ++= Seq(
-      "org.typelevel" %% "cats-core" % "2.7.0",
-      "org.scalatest" %% "scalatest" % "3.2.11" % Test
+      "org.typelevel" %% "cats-core" % "2.8.0",
+      "org.scalatest" %% "scalatest" % "3.2.12" % Test
     )
   )
