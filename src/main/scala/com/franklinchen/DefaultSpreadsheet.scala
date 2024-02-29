@@ -6,7 +6,7 @@ import cats.implicits._
 
 object DefaultSpreadsheet extends Spreadsheet {
   /** Existential type. */
-  type ECell = Cell[_]
+  type ECell = Cell[?]
 
   /**
     A cell with global identity.
